@@ -4,17 +4,18 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de gravadora</title>
+    <title>Edição de gravadora</title>
 </head>
 <body>
 
     <div layout:fragment="content">
-        <h1>Cadastro de Gravadoras</h1>
+        <h1>Atualização de Gravadoras</h1>
 
-        <div th:if="${mensagem != null}" th:text="${mensagem}" class="alert alert-success"></div>
 
-        <form th:action="@{/gravadora/cadastrar}" method="post"
+
+        <form th:action="@{/gravadora/editar}" method="post"
                                                 th:object="${gravadora}">
+            <input th:field="*{codigo}" type="hidden">
             <div class="form-group">
                 <label>Nome</label>
                 <input th:field="*{nome}" class="form-control" type="text">
@@ -31,7 +32,7 @@
                 <label>Data Abertura</label>
                 <input th:field="*{dataAbertura}" class="form-control" type="text">
             </div>
-            <input type="submit" value="Cadastrar" class="btn btn-primary"/>
+            <input type="submit" value="Editar" class="btn btn-primary"/>
         </form>
     </div>
 

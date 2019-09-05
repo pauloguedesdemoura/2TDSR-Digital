@@ -3,12 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">FIAPRecords</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">FIAP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
             aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
@@ -25,13 +25,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Gravadora
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Ação</a>
-                    <a class="dropdown-item" href="#">Outra ação</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Algo mais aqui</a>
+                    <a class="dropdown-item" th:href="@{/gravadora/cadastrar}">Cadastrar</a>
+                    <a class="dropdown-item" th:href="@{/gravadora/listar}">Listar</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -45,7 +43,7 @@
     </div>
 </nav>
 
-<div layout:fragment="content"></div>
+<div class="container" layout:fragment="content"></div>
 
 <footer class="text-center">
     Todos os direitos reservados - 2019 &copy;

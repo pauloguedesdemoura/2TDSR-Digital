@@ -1,6 +1,7 @@
 package br.com.fiap.gravadora.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 //CRIAR A API COM CRUD
 
@@ -17,6 +18,16 @@ public class Gravadora {
     private boolean internacional;
 
     private double faturamento;
+
+    private LocalDate dataAbertura;
+
+    public LocalDate getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(LocalDate dataAbertura) {
+        this.dataAbertura = dataAbertura;
+    }
 
     public int getCodigo() {
         return codigo;

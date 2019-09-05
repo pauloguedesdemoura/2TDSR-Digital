@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Gravadoras</title>
+</head>
+<body>
+
+    <div layout:fragment="content">
+        <h2>Lista de Gravadoras</h2>
+
+        <div th:if="${mensagem != null}" th:text="${mensagem}" class="alert alert-success"></div>
+
+        <table class="table">
+            <tr>
+                <th>Nome</th>
+                <th>Faturamento</th>
+                <th>Internacional</th>
+                <th>Data Abertura</th>
+                <th></th>
+            </tr>
+            <tr th:each="item:${gravadoras}">
+                <td th:text="${item.nome}"></td>
+                <td th:text="${item.faturamento}"></td>
+                <td th:text="${item.internacional?'Sim':'Não'}"></td>
+                <td th:text="${#temporals.format(item.dataAbertura,'dd/MM/yyyy')}"></td>
+                <td>
+                    <a th:href="@{/gravadora/editar/} + ${item.codigo}">Editar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
