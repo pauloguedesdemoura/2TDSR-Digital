@@ -18,6 +18,19 @@ public class GravadoraController {
     @Autowired
     private GravadoraRepository rep;
 
+    @GetMapping("buscarGravadoras")
+    public String buscar(String termoPesquisa, Model model){
+        model.addAttribute("gravadoras", rep.findByNomeContainsIgnoreCase(termoPesquisa));
+        return "gravadora/lista";
+    }
+
+    @PostMapping("excluir")
+    public String deletar(int id, RedirectAttributes redirect){
+        rep.deleteById(id);
+        redirect.addFlashAttribute("mensagem","Removido com sucesso!");
+        return "redirect:/gravadora/listar";
+    }
+
     @PostMapping("editar")
     public String editar(Gravadora gravadora, RedirectAttributes redirect){
         //atualizar a gravadora no banco
@@ -39,13 +52,13 @@ public class GravadoraController {
     }
 
     @PostMapping("cadastrar")
-    public String cadastrar(Gravadora gravadora, Model model){
+    public String cadastrar(Gravadora gravadora, RedirectAttributes redirect){
         //cadastrar/salvar a gravadora no banco de dados
         rep.save(gravadora);
         //mandar uma mensagem para a tela
-        model.addAttribute("mensagem","Cadastrado!");
+        redirect.addFlashAttribute("mensagem","Cadastrado!");
         //retornar a página
-        return "gravadora/form";
+        return "redirect:/gravadora/listar"; //URL
     }
 
     @GetMapping("cadastrar")

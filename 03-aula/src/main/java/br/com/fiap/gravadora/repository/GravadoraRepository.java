@@ -8,6 +8,9 @@ import java.util.List;
 public interface GravadoraRepository
                         extends JpaRepository<Gravadora,Integer> {
 
+    //Pesquisar as gravadoras por parte do nome sem case sensitive
+    List<Gravadora> findByNomeContainsIgnoreCase(String nome);
+
     //Pesquisar as gravadoras por nome
     List<Gravadora> findByNomeContains(String nome);
 
