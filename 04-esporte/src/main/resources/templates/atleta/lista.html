@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Lista de Atletas</h1>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+            <th>Modalidade</th>
+        </tr>
+        <tr th:each="item:${atletas}">
+            <td th:text="${item.nome}"></td>
+            <td th:text="${#temporals.format(item.dataNascimento,'dd/MM/yyyy')}"></td>
+            <td th:text="${item.modalidade.nome}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
