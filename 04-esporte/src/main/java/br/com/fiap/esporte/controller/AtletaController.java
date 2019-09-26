@@ -21,6 +21,12 @@ public class AtletaController {
     @Autowired
     private ModalidadeRepository modalidadeRepository;
 
+    @GetMapping("buscar")
+    public String buscar(String nomeBusca, Model model ){
+        model.addAttribute("atletas", atletaRepository.findByNomeContainsIgnoreCase(nomeBusca));
+        return "atleta/lista";
+    }
+
     @GetMapping("listar")
     public String listar(Model model){
         model.addAttribute("atletas", atletaRepository.findAll());

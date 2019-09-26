@@ -24,6 +24,7 @@
         <div class="form-group">
             <label>Modalidade</label>
             <select th:field="*{modalidade.codigo}" class="form-control">
+                <option value="0">Selecione</option>
                 <option th:each="item:${modalidades}" th:text="${item.nome}"
                         th:value="${item.codigo}"></option>
             </select>
